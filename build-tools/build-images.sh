@@ -62,7 +62,6 @@ pull_or_clone_proj person-service https://github.com/kainovk/person-service.git
 build_lib common-module
 build_jar medical-monitoring message-analyzer person-service
 
-
 APP_VERSION=0.0.1-SNAPSHOT
 
 echo "Building Docker images"
