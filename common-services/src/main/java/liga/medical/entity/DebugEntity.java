@@ -32,6 +32,6 @@ public class DebugEntity {
     @Enumerated(EnumType.ORDINAL)
     private SystemType systemTypeId;
 
-    @Column(name = "method_params")
+    @Column(name = "method_params", length = 2048)
     private String methodParams;
 }
