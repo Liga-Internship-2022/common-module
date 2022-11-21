@@ -18,6 +18,7 @@
         <module>common-services</module>
         <module>dependency-management-bom</module>
         <module>common-utils</module>
+        <module>core</module>
     </modules>
 
     <properties>
@@ -33,12 +34,13 @@
         <pmd.plugin.version>3.14.0</pmd.plugin.version>
         <checkstyle.version>8.45.1</checkstyle.version>
 
-        <spring.boot.version>2.3.0.RELEASE</spring.boot.version>
+        <spring.boot.version>2.5.7</spring.boot.version>
         <spring.cloud.version>2.2.6.RELEASE</spring.cloud.version>
+        <spring.amqp.version>2.7.4</spring.amqp.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <model.mapper.version>2.3.7</model.mapper.version>
         <guava.version>29.0-jre</guava.version>
-        <lombok.version>1.18.12</lombok.version>
+        <lombok.version>1.18.24</lombok.version>
         <springboot.test.version>2.1.2.RELEASE</springboot.test.version>
     </properties>
 
@@ -129,6 +131,22 @@
 <!--                    </execution>-->
 <!--                </executions>-->
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <failOnViolation>true</failOnViolation>
+                    <printFailingErrors>true</printFailingErrors>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -143,6 +161,20 @@
                         <executions>
                             <execution>
                                 <id>checkstyle-validate-sources</id>
+                                <phase>none</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <printFailingErrors>true</printFailingErrors>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>checkstyle-pmd-validate-sources</id>
                                 <phase>none</phase>
                             </execution>
                         </executions>
